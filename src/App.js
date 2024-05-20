@@ -23,7 +23,6 @@ function App() {
     e.preventDefault();
     setNotes([...notes, {id: uuidv4(), text: note, isChecked: false}]);
     setNote('');
-    document.getElementById('inputText').value = '';
   }
   const updateNotes = (id,isChecked) => {
     let updatedNote = notes.map((note) => note.id === id ? { ...note, isChecked: !isChecked } : note);
@@ -48,7 +47,7 @@ function App() {
       <h1>To Do</h1>
     </header> 
     <form onSubmit={handleSubmit}> 
-      <input id='inputText' className='input-field'  placeholder='add todo' onChange={(e) => {setNote(e.target.value)}}/>
+      <input id='inputText' value={note} className='input-field'  placeholder='add todo' onChange={(e) => {setNote(e.target.value)}}/>
       <button className='btn1'>Add ToDo</button>
     </form>
     <button className='btn2' onClick={alldone}>mark all done</button>
